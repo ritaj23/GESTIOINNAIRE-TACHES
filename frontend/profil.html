@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ملفي الشخصي</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .profile-container {
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 350px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <h2>ملفي الشخصي</h2>
+        
+        <div class="section">
+            <form id="updateNameForm">
+                <label for="username">الاسم:</label>
+                <input type="text" id="username" name="username" value="User123">
+                <button type="submit">تحديث الاسم</button>
+            </form>
+        </div>
+
+        <div class="section">
+            <form id="changePasswordForm">
+                <label for="currentPassword">كلمة المرور الحالية:</label>
+                <input type="password" id="currentPassword" name="currentPassword">
+
+                <label for="newPassword">كلمة المرور الجديدة:</label>
+                <input type="password" id="newPassword" name="newPassword">
+
+                <label for="confirmPassword">تأكيد كلمة المرور:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword">
+
+                <button type="submit">تغيير كلمة المرور</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('updateNameForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let username = document.getElementById('username').value;
+            alert("تم تحديث الاسم إلى: " + username);
+        });
+
+        document.getElementById('changePasswordForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let newPass = document.getElementById('newPassword').value;
+            let confirm = document.getElementById('confirmPassword').value;
+
+            if(newPass !== confirm) {
+                alert("كلمة المرور الجديدة وتأكيدها غير متطابقين!");
+                return;
+            }
+
+            alert("تم تغيير كلمة المرور بنجاح!");
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - Gestionnaire de Tâches</title>
+    <link rel="stylesheet" href="style.css">
+<style>
+    .navbar ul {
+        display: flex;
+        gap: 15px;
+        list-style: none;
+        padding: 10px;
+        margin: 0;
+        background: #eee;
+        border-radius: 10px;
+    }
+    .navbar ul li a {
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: bold;
+        color: #fff;
+        display: block;
+    }
+    #tabTasks { background:#4a90e2; }
+    #tabUsers { background:#7ed321; }
+    #tabProfile { background:#f5a623; }
+</style>
+</head>
+<body>
+    <div class="navbar">
+        <ul>
+            <li><a href="#" id="tabTasks">Tasks</a></li>
+            <li><a href="#" id="tabUsers">Users</a></li>
+            <li><a href="#" id="tabProfile">Profil</a></li>
+        </ul>
+    </div>
+
+    <div class="container section-box" id="tasksSection">
+        <h2>Mes Tâches</h2>
+        <table id="tasksTable">
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Description</th>
+                    <th>Propriétaire</th>
+                    <th>Collaborateurs</th>
+                    <th>Statut</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <button id="addTaskBtn">Ajouter une tâche</button>
+        <button id="logoutBtn">Se déconnecter</button>
+    </div>
+
+    <div class="container section-box" id="usersSection" style="display:none;">
+        <h2>Utilisateurs</h2>
+        <table id="usersTable">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Rôle</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container section-box" id="profileSection" style="display:none;">
+        <h2>Mon Profil</h2>
+        <p><strong>Nom :</strong> <span id="profileName"></span></p>
+        <p><strong>Email :</strong> <span id="profileEmail"></span></p>
+        <button id="editProfileBtn">Modifier Profil</button>
+    </div>
+
+    <script>
+        const tasksSection = document.getElementById("tasksSection");
+        const usersSection = document.getElementById("usersSection");
+        const profileSection = document.getElementById("profileSection");
+
+        document.getElementById("tabTasks").onclick = () => {
+            tasksSection.style.display = "block";
+            usersSection.style.display = "none";
+            profileSection.style.display = "none";
+        }
+
+        document.getElementById("tabUsers").onclick = () => {
+            tasksSection.style.display = "none";
+            usersSection.style.display = "block";
+            profileSection.style.display = "none";
+        }
+
+        document.getElementById("tabProfile").onclick = () => {
+            tasksSection.style.display = "none";
+            usersSection.style.display = "none";
+            profileSection.style.display = "block";
+        }
+    </script>
+<style>
+    .section-box {
+        background: #ffffffaa;
+        padding: 20px;
+        border-radius: 12px;
+        margin-top: 20px;
+        backdrop-filter: blur(4px);
+    }
+</style>
+</body>
+</html>

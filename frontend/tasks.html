@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestionnaire de tâches collaboratif</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f5f6fa;
+        }
+
+        .task-card {
+            transition: 0.2s ease;
+        }
+
+        .task-card:hover {
+            transform: scale(1.01);
+        }
+
+        .done {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container">
+        <span class="navbar-brand">
+            📌 Gestionnaire de tâches collaboratif
+        </span>
+    </div>
+</nav>
+
+<!-- Container المهام -->
+<div class="container mt-4">
+
+    <h3 class="mb-4">Liste des tâches</h3>
+
+    <div class="list-group">
+
+        <!-- Tâche 1 -->
+        <div class="list-group-item d-flex justify-content-between align-items-center task-card">
+            <div>
+                <h5 class="mb-1">Étudier Flask</h5>
+                <p class="mb-1 text-muted">Lire la documentation et comprendre les routes</p>
+                <span class="badge bg-primary">En cours</span>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn btn-success btn-sm">✔️</button>
+                <button class="btn btn-primary btn-sm">Modifier</button>
+                <button class="btn btn-danger btn-sm">Supprimer</button>
+            </div>
+        </div>
+
+        <!-- Tâche 2 -->
+        <div class="list-group-item d-flex justify-content-between align-items-center task-card done">
+            <div>
+                <h5 class="mb-1">Installer MongoDB</h5>
+                <p class="mb-1 text-muted">Configurer la base de données locale</p>
+                <span class="badge bg-success">Terminée</span>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn btn-warning btn-sm">↺</button>
+                <button class="btn btn-primary btn-sm">Modifier</button>
+                <button class="btn btn-danger btn-sm">Supprimer</button>
+            </div>
+        </div>
+
+        <!-- Tâche 3 -->
+        <div class="list-group-item d-flex justify-content-between align-items-center task-card">
+            <div>
+                <h5 class="mb-1">Créer le projet GitHub</h5>
+                <p class="mb-1 text-muted">Partager le dépôt avec l'équipe</p>
+                <span class="badge bg-secondary">Non commencée</span>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn btn-success btn-sm">✔️</button>
+                <button class="btn btn-primary btn-sm">Modifier</button>
+                <button class="btn btn-danger btn-sm">Supprimer</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
