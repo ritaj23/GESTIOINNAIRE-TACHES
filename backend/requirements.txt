@@ -1,5 +1,2 @@
-Flask
-flask-cors
-pymongo
-python-dotenv
-PyJWT
+Flask==2.3.3
+pymongo==4.4.0

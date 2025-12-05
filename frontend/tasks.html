@@ -2,46 +2,63 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Gestionnaire de tâches collaboratif</title>
+    <span class="navbar-brand fw-bold text-black">
+    📌 Gestionnaire de tâches collaboratif
+</span>
+
+    
+
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
         body {
-            background-color: #f5f6fa;
+            background: url('1.jpg') no-repeat center center fixed;
+            background-size: cover;
         }
 
         .task-card {
             transition: 0.2s ease;
+            background-color: #dfe2ff; /* خلفية لكل بطاقة مهمة */
+            border: 1px solid #f1f1f1;
+            border-radius: 8px;
+            color: rgb(0, 0, 0); /* النصوص باللون الأبيض */
+        }
+
+        .task-card h5,
+        .task-card p,
+        .task-card span.badge {
+            color: rgb(0, 0, 0); /* تأكيد للنصوص داخل البطاقة */
         }
 
         .task-card:hover {
             transform: scale(1.01);
+            box-shadow: 0 2px 10px rgb(0, 0, 0);
         }
 
         .done {
             text-decoration: line-through;
             opacity: 0.6;
         }
+        
     </style>
 </head>
 
 <body>
 
 <!-- Navbar -->
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-light" style="background: linear-gradient(90deg, #00089b, #1f01fd); border-radius: 8px; margin: 10px 0;">
     <div class="container">
-        <span class="navbar-brand">
+        <span class="navbar-brand fw-bold text-white">
             📌 Gestionnaire de tâches collaboratif
         </span>
     </div>
 </nav>
 
-<!-- Container المهام -->
 <div class="container mt-4">
 
-    <h3 class="mb-4">Liste des tâches</h3>
+    <h3 class="mb-4 text-black">Liste des tâches</h3>
 
     <div class="list-group">
 
@@ -52,9 +69,8 @@
                 <p class="mb-1 text-muted">Lire la documentation et comprendre les routes</p>
                 <span class="badge bg-primary">En cours</span>
             </div>
-
             <div class="btn-group">
-                <button class="btn btn-success btn-sm">✔️</button>
+                <button class="btn btn-success btn-sm toggleBtn">✔️</button>
                 <button class="btn btn-primary btn-sm">Modifier</button>
                 <button class="btn btn-danger btn-sm">Supprimer</button>
             </div>
@@ -67,9 +83,8 @@
                 <p class="mb-1 text-muted">Configurer la base de données locale</p>
                 <span class="badge bg-success">Terminée</span>
             </div>
-
             <div class="btn-group">
-                <button class="btn btn-warning btn-sm">↺</button>
+                <button class="btn btn-success btn-sm toggleBtn">✔️</button>
                 <button class="btn btn-primary btn-sm">Modifier</button>
                 <button class="btn btn-danger btn-sm">Supprimer</button>
             </div>
@@ -82,16 +97,82 @@
                 <p class="mb-1 text-muted">Partager le dépôt avec l'équipe</p>
                 <span class="badge bg-secondary">Non commencée</span>
             </div>
-
             <div class="btn-group">
-                <button class="btn btn-success btn-sm">✔️</button>
+                <button class="btn btn-success btn-sm toggleBtn">✔️</button>
                 <button class="btn btn-primary btn-sm">Modifier</button>
                 <button class="btn btn-danger btn-sm">Supprimer</button>
             </div>
         </div>
 
     </div>
+
+    <button id="addTaskBtn" class="btn btn-primary mt-3">Ajouter une tâche</button>
+
 </div>
+
+<script>
+    const addTaskBtn = document.getElementById("addTaskBtn");
+    const listGroup = document.querySelector(".list-group");
+
+    addTaskBtn.addEventListener("click", () => {
+        const title = prompt("Titre de la tâche :");
+        if(!title) return;
+
+        const description = prompt("Description de la tâche :");
+        if(!description) return;
+
+        const taskDiv = document.createElement("div");
+        taskDiv.className = "list-group-item d-flex justify-content-between align-items-center task-card";
+        taskDiv.innerHTML = `
+            <div>
+                <h5 class="mb-1">${title}</h5>
+                <p class="mb-1 text-muted">${description}</p>
+                <span class="badge bg-secondary">Non commencée</span>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-success btn-sm toggleBtn">✔️</button>
+                <button class="btn btn-primary btn-sm">Modifier</button>
+                <button class="btn btn-danger btn-sm">Supprimer</button>
+            </div>
+        `;
+        listGroup.appendChild(taskDiv);
+    });
+
+    listGroup.addEventListener("click", (e) => {
+        const btn = e.target;
+        const taskItem = btn.closest(".list-group-item");
+        if(!taskItem) return;
+
+        const badge = taskItem.querySelector("span.badge");
+
+        if(btn.classList.contains("toggleBtn")) {
+            if(taskItem.classList.contains("done")) {
+                taskItem.classList.remove("done");
+                badge.textContent = "Non commencée";
+                badge.className = "badge bg-secondary";
+            } else {
+                taskItem.classList.add("done");
+                badge.textContent = "Terminée";
+                badge.className = "badge bg-success";
+            }
+        }
+
+        if(btn.textContent === "Modifier") {
+            const titleEl = taskItem.querySelector("h5");
+            const descEl = taskItem.querySelector("p");
+            const newTitle = prompt("Modifier le titre :", titleEl.textContent);
+            if(newTitle) titleEl.textContent = newTitle;
+            const newDesc = prompt("Modifier la description :", descEl.textContent);
+            if(newDesc) descEl.textContent = newDesc;
+        }
+
+        if(btn.textContent === "Supprimer") {
+            if(confirm("Voulez-vous supprimer cette tâche ?")) {
+                taskItem.remove();
+            }
+        }
+    });
+</script>
 
 </body>
 </html>

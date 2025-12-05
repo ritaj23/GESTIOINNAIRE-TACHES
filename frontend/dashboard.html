@@ -3,111 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <title>Dashboard - Gestionnaire de Tâches</title>
-    <link rel="stylesheet" href="style.css">
-<style>
-    .navbar ul {
-        display: flex;
-        gap: 15px;
-        list-style: none;
-        padding: 10px;
-        margin: 0;
-        background: #eee;
-        border-radius: 10px;
-    }
-    .navbar ul li a {
-        padding: 10px 20px;
-        border-radius: 8px;
-        font-weight: bold;
-        color: #fff;
-        display: block;
-    }
-    #tabTasks { background:#4a90e2; }
-    #tabUsers { background:#7ed321; }
-    #tabProfile { background:#f5a623; }
-</style>
+    <style>
+        /* خلفية الصفحة */
+        body {
+            background: url('123.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+        }
+
+        /* NAVBAR */
+        .navbar ul {
+            display: flex;
+            gap: 15px;
+            list-style: none;
+            padding: 12px;
+            margin: 0;
+            background: rgb(255, 255, 255);
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .navbar ul li a {
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: bold;
+            color: #000;
+            display: block;
+            transition: 0.3s;
+        }
+        .navbar ul li a:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        /* Section Box */
+        .section-box {
+            background: rgba(0,0,0,0.4);
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        /* Titre "Mes Tâches" */
+        .title-tasks {
+            background: rgba(0,0,50,0.6);
+            color: white;
+            padding: 12px 18px;
+            border-radius: 10px;
+            width: fit-content;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        /* Table styling */
+        #tasksTable th, #tasksTable td {
+            padding: 10px;
+            border-radius: 6px;
+            text-align: left;
+            background: rgba(0, 123, 255, 0.5); /* أزرق لتاسكس */
+            color: white;
+        }
+
+        #usersTable th, #usersTable td {
+            padding: 10px;
+            border-radius: 6px;
+            text-align: left;
+            background: rgba(40, 167, 69, 0.5); /* أخضر لليوزرز */
+            color: white;
+        }
+
+        #profileSection p {
+            background: rgba(255, 193, 7, 0.5); /* أصفر للبروفايل */
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        /* Buttons */
+        button {
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            border: none;
+            background: rgba(254, 168, 7, 0.6);
+            color: white;
+        }
+        button:hover {
+            transform: scale(1.05);
+            background: rgba(0, 0, 0, 0.8);
+        }
+    </style>
 </head>
 <body>
-    <div class="navbar">
-        <ul>
-            <li><a href="#" id="tabTasks">Tasks</a></li>
-            <li><a href="#" id="tabUsers">Users</a></li>
-            <li><a href="#" id="tabProfile">Profil</a></li>
-        </ul>
-    </div>
 
-    <div class="container section-box" id="tasksSection">
-        <h2>Mes Tâches</h2>
-        <table id="tasksTable">
-            <thead>
-                <tr>
-                    <th>Titre</th>
-                    <th>Description</th>
-                    <th>Propriétaire</th>
-                    <th>Collaborateurs</th>
-                    <th>Statut</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-        <button id="addTaskBtn">Ajouter une tâche</button>
-        <button id="logoutBtn">Se déconnecter</button>
-    </div>
+<div class="navbar">
+    <ul>
+       <li><a href="tasks.html">Tasks</a></li> 
+       <li><a href="users.html">Users</a></li>
+        <li><a href="profil.html">Profil</a></li>
+    </ul>
+</div>
 
-    <div class="container section-box" id="usersSection" style="display:none;">
-        <h2>Utilisateurs</h2>
-        <table id="usersTable">
-            <thead>
-                <tr>
-                    <th>Nom</th>
-                    <th>Email</th>
-                    <th>Rôle</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-    </div>
+<div class="container section-box" id="tasksSection">
+    <h2 class="title-tasks">Mes Tâches</h2>
+    <table id="tasksTable">
+        <thead>
+            <tr>
+                
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <button id="addTaskBtn" onclick="window.location.href='tasks.html'">Ajouter une tâche</button>
+    <button id="logoutBtn" onclick="window.location.href='login.html'">Se déconnecter</button>
+</div>
 
-    <div class="container section-box" id="profileSection" style="display:none;">
-        <h2>Mon Profil</h2>
-        <p><strong>Nom :</strong> <span id="profileName"></span></p>
-        <p><strong>Email :</strong> <span id="profileEmail"></span></p>
-        <button id="editProfileBtn">Modifier Profil</button>
-    </div>
+<div class="container section-box" id="usersSection" style="display:none;">
+    <h2>Utilisateurs</h2>
+    <table id="usersTable">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Rôle</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
 
-    <script>
-        const tasksSection = document.getElementById("tasksSection");
-        const usersSection = document.getElementById("usersSection");
-        const profileSection = document.getElementById("profileSection");
+<div class="container section-box" id="profileSection" style="display:none;">
+    <h2>Mon Profil</h2>
+    <p><strong>Nom :</strong> <span id="profileName">Monar</span></p>
+    <p><strong>Email :</strong> <span id="profileEmail">monar@example.com</span></p>
+    <button id="editProfileBtn">Modifier Profil</button>
+</div>
 
-        document.getElementById("tabTasks").onclick = () => {
-            tasksSection.style.display = "block";
-            usersSection.style.display = "none";
-            profileSection.style.display = "none";
-        }
+<script>
+    const tasksSection = document.getElementById("tasksSection");
+    const usersSection = document.getElementById("usersSection");
+    const profileSection = document.getElementById("profileSection");
 
-        document.getElementById("tabUsers").onclick = () => {
-            tasksSection.style.display = "none";
-            usersSection.style.display = "block";
-            profileSection.style.display = "none";
-        }
-
-        document.getElementById("tabProfile").onclick = () => {
-            tasksSection.style.display = "none";
-            usersSection.style.display = "none";
-            profileSection.style.display = "block";
-        }
-    </script>
-<style>
-    .section-box {
-        background: #ffffffaa;
-        padding: 20px;
-        border-radius: 12px;
-        margin-top: 20px;
-        backdrop-filter: blur(4px);
+    document.getElementById("tabtasks").onclick = () => {
+        tasksSection.style.display = "block";
+        usersSection.style.display = "none";
+        profileSection.style.display = "none";
     }
-</style>
+
+    document.getElementById("tabusers").onclick = () => {
+        tasksSection.style.display = "none";
+        usersSection.style.display = "block";
+        profileSection.style.display = "none";
+    }
+
+    document.getElementById("tabprofil").onclick = () => {
+        tasksSection.style.display = "none";
+        usersSection.style.display = "none";
+        profileSection.style.display = "block";
+    }
+</script>
+
 </body>
 </html>

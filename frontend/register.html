@@ -2,20 +2,94 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Register - Gestionnaire de Tâches</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Register</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Cairo", sans-serif;
+            background: url('3.jpg') no-repeat center center fixed;
+            background-size: cover;
+        
+           
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        h2 {
+            text-align: center;
+            font-size: 32px;
+            color: #fff;
+            margin-bottom: 30px;
+        }
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 40px 30px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+            width: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .card label {
+            font-weight: 500;
+            color: #333;
+        }
+        .card input {
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            outline: none;
+        }
+        .card input:focus {
+            border-color: #6a11cb;
+            box-shadow: 0 0 5px rgba(106,17,203,0.5);
+        }
+        .card button {
+            margin-top: 10px;
+            background: #59f5ac;
+            color: white;
+            padding: 12px;
+            border: none;
+            font-size: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .card button:hover {
+            background: #4e0fa8;
+        }
+        .card p {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .card a {
+            color: #6a11cb;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .card a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Inscription</h2>
-        <form id="registerForm">
-            <input type="text" id="username" placeholder="Nom d'utilisateur" required>
-            <input type="password" id="password" placeholder="Mot de passe" required>
-            <button type="submit">S'inscrire</button>
+    <div class="register-container">
+        <h2>Register</h2>
+        <form method="post" action="{{ url_for('register') }}" class="card">
+            <label>Nom d'utilisateur</label>
+            <input type="text" name="username" required>
+            <label>Email</label>
+            <input type="email" name="email" required>
+            <label>Mot de passe</label>
+            <input type="password" name="password" required>
+            <button type="submit">Créer compte</button>
+            <p>Déjà inscrit ? <a href="login.html">Se connecter</a></p>
         </form>
-        <p>Déjà inscrit ? <a href="login.html">Se connecter</a></p>
     </div>
-
-    <script src="script.js"></script>
 </body>
 </html>
